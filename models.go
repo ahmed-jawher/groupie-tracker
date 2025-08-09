@@ -133,7 +133,6 @@ func getLocations(id string) []string {
 
 	for i := range locations.Locations {
 		locations.Locations[i] = strings.ReplaceAll(locations.Locations[i], "_", " ")
-		locations.Locations[i] = strings.ReplaceAll(locations.Locations[i], "-", ", ")
 		locations.Locations[i] = strings.Title(locations.Locations[i])
 	}
 
@@ -196,6 +195,7 @@ func getRelations(id string) map[string][]string {
 		key = strings.Title(key)
 		temp[key] = value
 	}
+	
 
 	return temp
 }
