@@ -9,7 +9,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	// Register handlers
+	//  Register handlers
 	mux.HandleFunc("/", rootHandler)
 	mux.HandleFunc("/artists/", artistHandler)
 
