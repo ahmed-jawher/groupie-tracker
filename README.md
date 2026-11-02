@@ -1,117 +1,76 @@
-# 🎸 Groupie Tracker
+# Groupie Tracker
 
-A modern web application that displays and visualizes information about music bands and artists, featuring a sleek dark theme and smooth animations.
+A Go web application that collects data about music artists from a public REST API and presents it as a clean, browsable website with band members, first albums, concert locations and tour dates.
 
-## 🌟 Features
+![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-informational)
 
-- **Artist Information**
-  - Artist profiles with images
-  - Band members listing
-  - Concert locations
-  - First album dates
-  - Concert dates
-  - Related information
+## Overview
 
-- **Error Handling**
-  - Custom error pages with consistent styling
-  - User-friendly error messages
-  - Smooth navigation back to safety
+The server fetches four related API resources and combines them into a single view for each artist:
 
-## 🚀 Getting Started
+| Endpoint | Data |
+|---|---|
+| `/api/artists` | Name, image, members, creation year, first album |
+| `/api/locations` | Cities where the artist has performed |
+| `/api/dates` | Concert dates |
+| `/api/relation` | Which dates belong to which location |
 
-### Prerequisites
+The project uses only the Go standard library (`net/http`, `encoding/json`, `html/template`).
 
-- Go 1.16 or higher
-- A modern web browser
+## Features
 
-### Installation
+- **Artist gallery**: a responsive grid of artist cards with hover animations
+- **Artist detail page** (`/artists/{id}`) showing:
+  - Image, creation date and first album
+  - All band members
+  - Concert locations and dates, linked through the relation data
+- **Error handling**: custom pages for `400` (non-numeric ID), `404` (unknown route or artist) and `500` (API or template failure)
+- Dark theme with glassmorphism cards and smooth transitions
 
-1. Clone the repository:
+## Getting Started
+
+**Requirements:** Go 1.20 or newer
+
 ```bash
-git clone https://github.com/yourusername/groupie-tracker.git
+git clone https://github.com/ahmed-jawher/groupie-tracker.git
 cd groupie-tracker
-```
-
-2. Run the application:
-```bash
 go run .
 ```
 
-3. Open your browser and visit:
-```
-http://localhost:8080
-```
+Open <http://localhost:8080>.
 
-## 🛠️ Technical Details
+> **Note:** The project was built against the course API at `groupietrackers.herokuapp.com`, which is no longer online. To run it today, point the URLs in `handlers.go` to a compatible mirror or a local mock of the four endpoints.
 
-### Project Structure
-```
+## Routes
+
+| Route | Description |
+|---|---|
+| `GET /` | Artist gallery |
+| `GET /artists/{id}` | Details for a single artist |
+
+## Project Structure
+
+```text
 groupie-tracker/
-├── main.go         # Entry point and server setup
-├── handlers.go     # HTTP request handlers
-├── models.go       # Data models and API interactions
-└── templates/      # HTML templates
-    ├── index.html  # Home page
-    ├── artist.html # Artist details page
-    └── error.html  # Error page template
+├── main.go                            # server setup and routing
+├── handlers.go                        # HTTP handlers, API calls, error pages
+├── models.go                          # API and view models
+├── templates/
+│   ├── index.html                     # artist gallery
+│   ├── artist.html                    # artist details
+│   └── error.html                     # shared error page
+└── groupie-tracker-visualizations/    # follow-up project (see below)
 ```
 
-### Technologies Used
+## Related Projects
 
-- **Backend**
-  - Go (Golang)
-  - Standard library (net/http)
-  - HTML templates
+| Project | Description |
+|---|---|
+| [`groupie-tracker-visualizations/`](groupie-tracker-visualizations) | The follow-up stage, focused on presenting the data in a clear, visual way |
 
-- **Frontend**
-  - HTML5
-  - CSS3 (Modern features)
-  - Responsive Design
+## Author
 
-## 🎨 Design Features
-
-- Animated cards with hover effects
-- Dynamic content loading
-- Responsive grid layout
-- Custom error pages
-- Smooth transitions
-- Glass-morphism effects
-- Neon accent colors
-
-## 🌐 API Integration
-
-The application integrates with the provided API endpoints:
-- Artists information
-- Locations
-- Dates
-- Relations
-
-## 📱 Responsive Design
-
-The application is fully responsive and works on:
-- Desktop computers
-- Tablets
-- Mobile phones
-- Various screen sizes and orientations
-
-## ⚡ Performance
-
-- Optimized image loading
-- Smooth animations
-- Efficient error handling
-- Fast page loads
-
-## 🔒 Error Handling
-
-Custom error pages for:
-- 404 Not Found
-- 400 Bad Request
-- 500 Internal Server Error
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
+**Ahmed Jawher** — [@ahmed-jawher](https://github.com/ahmed-jawher)
