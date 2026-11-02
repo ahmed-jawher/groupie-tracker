@@ -7,6 +7,8 @@ A Go web application that collects data about music artists from a public REST A
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![REST API](https://img.shields.io/badge/REST-API-informational)
 
+![Artist gallery](docs/screenshots/gallery.png)
+
 ## Overview
 
 The server fetches four related API resources and combines them into a single view for each artist:
@@ -42,7 +44,17 @@ go run .
 
 Open <http://localhost:8080>.
 
-> **Note:** The project was built against the course API at `groupietrackers.herokuapp.com`, which is no longer online. To run it today, point the URLs in `handlers.go` to a compatible mirror or a local mock of the four endpoints.
+The data comes from the 01 Edu Groupie Trackers API at `https://groupietrackers.01edu.ai/api`.
+
+## Screenshots
+
+| Artist gallery | Artist details |
+|---|---|
+| ![Gallery](docs/screenshots/gallery.png) | ![Artist](docs/screenshots/artist.png) |
+
+| Concert locations and dates | Error page |
+|---|---|
+| ![Concerts](docs/screenshots/concerts.png) | ![Error](docs/screenshots/error.png) |
 
 ## Routes
 
