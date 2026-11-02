@@ -48,7 +48,7 @@ type FinalArtist struct {
 }
 
 func getArtists() []Artist {
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+	response, err := http.Get("https://groupietrackers.01edu.ai/api/artists")
 	if err != nil {
 		log.Println("Error fetching artists:", err)
 		return nil
@@ -72,7 +72,7 @@ func getArtists() []Artist {
 }
 
 func getArtistByID(id string) *FinalArtist {
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/artists/" + id)
+	response, err := http.Get("https://groupietrackers.01edu.ai/api/artists/" + id)
 	if err != nil {
 		log.Println("Error fetching artists by ID", err)
 		return nil
@@ -111,7 +111,7 @@ func getArtistByID(id string) *FinalArtist {
 }
 
 func getLocations(id string) []string {
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/locations/" + id)
+	response, err := http.Get("https://groupietrackers.01edu.ai/api/locations/" + id)
 	if err != nil {
 		log.Println("Error fetching locations:", err)
 		return nil
@@ -140,7 +140,7 @@ func getLocations(id string) []string {
 }
 
 func getDates(id string) []string {
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/dates/" + id)
+	response, err := http.Get("https://groupietrackers.01edu.ai/api/dates/" + id)
 	if err != nil {
 		log.Println("Error fetching dates:", err)
 		return nil
@@ -168,7 +168,7 @@ func getDates(id string) []string {
 }
 
 func getRelations(id string) map[string][]string {
-	response, err := http.Get("https://groupietrackers.herokuapp.com/api/relation/" + id)
+	response, err := http.Get("https://groupietrackers.01edu.ai/api/relation/" + id)
 	if err != nil {
 		log.Println("Error fetching relations:", err)
 		return nil
